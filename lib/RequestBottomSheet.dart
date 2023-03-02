@@ -8,8 +8,8 @@ class RequestBottomSheet extends StatefulWidget {
 }
 
 class _RequestBottomSheetState extends State<RequestBottomSheet> {
-  double _height = 200.0;
-  double _maxHeight = 240.0;
+  double _height = 220.0;
+  double _maxHeight = 260.0;
 
   void _increaseHeight() {
     setState(() {
@@ -19,7 +19,7 @@ class _RequestBottomSheetState extends State<RequestBottomSheet> {
 
   void _decreaseHeight() {
     setState(() {
-      _height = 200.0;
+      _height = 220.0;
     });
   }
 

@@ -1,14 +1,29 @@
 import 'package:flutter/material.dart';
 import 'package:carousel_slider/carousel_slider.dart';
+import 'package:flutter_svg/svg.dart';
 
 import 'RequestBottomSheet.dart';
 
 void main() {
-  runApp(const MyApp());
+  runApp(MyApp());
 }
 
 class MyApp extends StatelessWidget {
-  const MyApp({super.key});
+  MaterialColor primaryColor = MaterialColor(
+    0xFF4B48C9,
+    <int, Color>{
+      50: Color(0xFFE9E9FB),
+      100: Color(0xFFC6C5F7),
+      200: Color(0xFFA3A1F4),
+      300: Color(0xFF7F7DF1),
+      400: Color(0xFF6765EF),
+      500: Color(0xFF4B48C9),
+      600: Color(0xFF433FC0),
+      700: Color(0xFF392EA9),
+      800: Color(0xFF2F258F),
+      900: Color(0xFF231B68),
+    },
+  );
 
   // This widget is the root of your application.
   @override
@@ -17,7 +32,7 @@ class MyApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       title: 'Flutter Demo',
       theme: ThemeData(
-        primarySwatch: Colors.blue,
+        primarySwatch: primaryColor,
       ),
       home: const MyHomePage(title: 'Flutter Demo Home Page'),
     );
@@ -40,7 +55,12 @@ class _MyHomePageState extends State<MyHomePage> {
   List<Widget> reviewIcon = [
     const CircleAvatar(
       backgroundImage: NetworkImage(
-          "https://www.motorbeam.com/wp-content/uploads/Honda-Activa-125-Side-1.jpg"),
+          "https://images.indianexpress.com/2021/10/jessi-eisenberg-1200.jpg"),
+      radius: 18,
+    ),
+    const CircleAvatar(
+      backgroundImage: NetworkImage(
+          "https://intrld.com/wp-content/uploads/2019/01/the-social-network-suite.jpg"),
       radius: 18,
     ),
     const CircleAvatar(
@@ -89,7 +109,7 @@ class _MyHomePageState extends State<MyHomePage> {
   Widget build(BuildContext context) {
     return Scaffold(
       body: SingleChildScrollView(
-        padding: EdgeInsets.only(top: 24),
+        padding: EdgeInsets.only(top: 28),
         child: Column(
           children: [
             SizedBox(
@@ -162,7 +182,7 @@ class _MyHomePageState extends State<MyHomePage> {
                 Column(
                   children: [
                     Container(
-                      padding: EdgeInsets.only(top: 20, left: 20, right: 20),
+                      padding: EdgeInsets.only(left: 20, right: 20),
                       child: Column(
                         children: [
                           Row(
@@ -180,13 +200,13 @@ class _MyHomePageState extends State<MyHomePage> {
                                 children: const [
                                   Icon(
                                     Icons.share,
-                                    size: 20,
+                                    size: 22,
                                     color: Color(0xFF323232),
                                   ),
                                   SizedBox(width: 10),
                                   Icon(
                                     Icons.favorite_border,
-                                    size: 20,
+                                    size: 22,
                                     color: Color(0xFF323232),
                                   ),
                                 ],
@@ -234,9 +254,10 @@ class _MyHomePageState extends State<MyHomePage> {
                               children: [
                                 Row(
                                   children: [
-                                    Icon(
-                                      Icons.water_drop,
-                                      size: 18,
+                                    SvgPicture.asset(
+                                      'assets/svgs/drops.svg',
+                                      width: 18,
+                                      height: 18,
                                       color: const Color(0xFF6E6E6E),
                                     ),
                                     Padding(
@@ -259,11 +280,12 @@ class _MyHomePageState extends State<MyHomePage> {
                                   height: 20,
                                 ),
                                 Row(
-                                  children: const [
-                                    Icon(
-                                      Icons.bike_scooter,
-                                      size: 18,
-                                      color: Color(0xFF6E6E6E),
+                                  children: [
+                                    SvgPicture.asset(
+                                      'assets/svgs/scootor.svg',
+                                      width: 18,
+                                      height: 18,
+                                      color: const Color(0xFF6E6E6E),
                                     ),
                                     Padding(
                                       padding: EdgeInsets.all(4),
@@ -286,9 +308,10 @@ class _MyHomePageState extends State<MyHomePage> {
                                 ),
                                 Row(
                                   children: [
-                                    Icon(
-                                      Icons.group,
-                                      size: 18,
+                                    SvgPicture.asset(
+                                      'assets/svgs/group.svg',
+                                      width: 16,
+                                      height: 16,
                                       color: const Color(0xFF6E6E6E),
                                     ),
                                     Padding(
@@ -324,7 +347,7 @@ class _MyHomePageState extends State<MyHomePage> {
                             'DATE & TIME',
                             style: TextStyle(
                                 color: Color(0xFF6E6E6E),
-                                fontSize: 12,
+                                fontSize: 14,
                                 fontFamily: 'Jost',
                                 fontWeight: FontWeight.w400),
                           ),
@@ -332,8 +355,10 @@ class _MyHomePageState extends State<MyHomePage> {
                             height: 10,
                           ),
                           Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
                             children: [
                               Column(
+                                crossAxisAlignment: CrossAxisAlignment.start,
                                 children: [
                                   Text(
                                     '12:30 PM',
@@ -344,7 +369,7 @@ class _MyHomePageState extends State<MyHomePage> {
                                         fontWeight: FontWeight.w500),
                                   ),
                                   Padding(
-                                    padding: const EdgeInsets.all(8.0),
+                                    padding: const EdgeInsets.only(top: 8.0),
                                     child: Text(
                                       'Tue, 2 Feb',
                                       style: TextStyle(
@@ -357,12 +382,14 @@ class _MyHomePageState extends State<MyHomePage> {
                                 ],
                               ),
                               Expanded(
-                                  child: Icon(
-                                Icons.arrow_right_alt_rounded,
-                                color: Color(0xFF6E6E6E),
-                                size: 60,
-                              )),
+                                  child: SvgPicture.asset(
+                                    'assets/svgs/arrow.svg',
+                                    width: 75,
+                                    height: 25,
+                                    color: const Color(0xFF6E6E6E),
+                                  ),),
                               Column(
+                                crossAxisAlignment: CrossAxisAlignment.start,
                                 children: [
                                   Text(
                                     '6:30 PM',
@@ -373,7 +400,7 @@ class _MyHomePageState extends State<MyHomePage> {
                                         fontWeight: FontWeight.w500),
                                   ),
                                   Padding(
-                                    padding: const EdgeInsets.all(8.0),
+                                    padding: const EdgeInsets.only(top: 8.0),
                                     child: Text(
                                       'Tue, 2 Feb',
                                       style: TextStyle(
@@ -405,7 +432,7 @@ class _MyHomePageState extends State<MyHomePage> {
                             'INSURANCE & PROTECTION',
                             style: TextStyle(
                                 color: Color(0xFF6E6E6E),
-                                fontSize: 12,
+                                fontSize: 14,
                                 fontFamily: 'Jost',
                                 fontWeight: FontWeight.w400),
                           ),
@@ -428,7 +455,7 @@ class _MyHomePageState extends State<MyHomePage> {
                               ),
                               Icon(
                                 Icons.info_outline,
-                                size: 20,
+                                size: 24,
                                 color: Color(0xFF4B48C9),
                               ),
                             ],
@@ -451,7 +478,7 @@ class _MyHomePageState extends State<MyHomePage> {
                             'CANCELLATION',
                             style: TextStyle(
                                 color: Color(0xFF6E6E6E),
-                                fontSize: 12,
+                                fontSize: 14,
                                 fontFamily: 'Jost',
                                 fontWeight: FontWeight.w400),
                           ),
@@ -476,7 +503,7 @@ class _MyHomePageState extends State<MyHomePage> {
                               ),
                               Icon(
                                 Icons.info_outline,
-                                size: 20,
+                                size: 24,
                                 color: Color(0xFF4B48C9),
                               ),
                             ],
@@ -499,16 +526,15 @@ class _MyHomePageState extends State<MyHomePage> {
                             'VEHICLE REVIEWS',
                             style: TextStyle(
                                 color: Color(0xFF6E6E6E),
-                                fontSize: 12,
+                                fontSize: 14,
                                 fontFamily: 'Jost',
                                 fontWeight: FontWeight.w400),
                           ),
                         ),
                         SingleChildScrollView(
-                          padding: const EdgeInsets.only(
-                              top: 10, bottom: 10, left: 20, right: 20),
+                          padding: const EdgeInsets.only(bottom: 10, left: 10, right: 10),
                           scrollDirection: Axis.horizontal,
-                          child: Row(
+                          child: Row( 
                             mainAxisAlignment: MainAxisAlignment.spaceBetween,
                             children: [
                               Card(
@@ -574,7 +600,7 @@ class _MyHomePageState extends State<MyHomePage> {
                                                     style: TextStyle(
                                                         color:
                                                             Color(0xFF6E6E6E),
-                                                        fontSize: 12,
+                                                        fontSize: 16,
                                                         fontFamily: 'Jost',
                                                         fontWeight:
                                                             FontWeight.w400),
@@ -596,9 +622,9 @@ class _MyHomePageState extends State<MyHomePage> {
                                               'Best host ever. Everything was on time and convenient. 5 stars!',
                                               style: TextStyle(
                                                   color: Color(0xFF323232),
-                                                  fontSize: 14,
+                                                  fontSize: 16,
                                                   fontFamily: 'Jost',
-                                                  fontWeight: FontWeight.w400),
+                                                  fontWeight: FontWeight.w500),
                                             ),
                                           ),
                                         ),
@@ -611,17 +637,17 @@ class _MyHomePageState extends State<MyHomePage> {
                                     padding: const EdgeInsets.all(10),
                                     child: Column(
                                       crossAxisAlignment:
-                                          CrossAxisAlignment.start,
+                                      CrossAxisAlignment.start,
                                       children: [
                                         Row(
                                           children: [
-                                            reviewIcon[0],
+                                            reviewIcon[1],
                                             Padding(
                                               padding: const EdgeInsets.only(
                                                   left: 8),
                                               child: Column(
                                                 crossAxisAlignment:
-                                                    CrossAxisAlignment.start,
+                                                CrossAxisAlignment.start,
                                                 children: [
                                                   Row(
                                                     children: [
@@ -629,37 +655,37 @@ class _MyHomePageState extends State<MyHomePage> {
                                                         Icons.star,
                                                         size: 18,
                                                         color:
-                                                            Color(0xFF4B48C9),
+                                                        Color(0xFF4B48C9),
                                                       ),
                                                       const Icon(
                                                         Icons.star,
                                                         size: 18,
                                                         color:
-                                                            Color(0xFF4B48C9),
+                                                        Color(0xFF4B48C9),
                                                       ),
                                                       const Icon(
                                                         Icons.star,
                                                         size: 18,
                                                         color:
-                                                            Color(0xFF4B48C9),
+                                                        Color(0xFF4B48C9),
                                                       ),
                                                       const Icon(
                                                         Icons.star,
                                                         size: 18,
                                                         color:
-                                                            Color(0xFF4B48C9),
+                                                        Color(0xFF4B48C9),
                                                       ),
                                                       const Icon(
                                                         Icons.star,
                                                         size: 18,
                                                         color:
-                                                            Color(0xFF4B48C9),
+                                                        Color(0xFF4B48C9),
                                                       ),
                                                       const Icon(
                                                         Icons.star,
                                                         size: 18,
                                                         color:
-                                                            Color(0xFF4B48C9),
+                                                        Color(0xFF4B48C9),
                                                       ),
                                                     ],
                                                   ),
@@ -667,11 +693,11 @@ class _MyHomePageState extends State<MyHomePage> {
                                                     'Manish',
                                                     style: TextStyle(
                                                         color:
-                                                            Color(0xFF6E6E6E),
-                                                        fontSize: 12,
+                                                        Color(0xFF6E6E6E),
+                                                        fontSize: 16,
                                                         fontFamily: 'Jost',
                                                         fontWeight:
-                                                            FontWeight.w400),
+                                                        FontWeight.w400),
                                                   ),
                                                 ],
                                               ),
@@ -690,9 +716,9 @@ class _MyHomePageState extends State<MyHomePage> {
                                               'Best host ever. Everything was on time and convenient. 5 stars!',
                                               style: TextStyle(
                                                   color: Color(0xFF323232),
-                                                  fontSize: 14,
+                                                  fontSize: 16,
                                                   fontFamily: 'Jost',
-                                                  fontWeight: FontWeight.w400),
+                                                  fontWeight: FontWeight.w500),
                                             ),
                                           ),
                                         ),
@@ -705,17 +731,17 @@ class _MyHomePageState extends State<MyHomePage> {
                                     padding: const EdgeInsets.all(10),
                                     child: Column(
                                       crossAxisAlignment:
-                                          CrossAxisAlignment.start,
+                                      CrossAxisAlignment.start,
                                       children: [
                                         Row(
                                           children: [
-                                            reviewIcon[0],
+                                            reviewIcon[2],
                                             Padding(
                                               padding: const EdgeInsets.only(
                                                   left: 8),
                                               child: Column(
                                                 crossAxisAlignment:
-                                                    CrossAxisAlignment.start,
+                                                CrossAxisAlignment.start,
                                                 children: [
                                                   Row(
                                                     children: [
@@ -723,37 +749,37 @@ class _MyHomePageState extends State<MyHomePage> {
                                                         Icons.star,
                                                         size: 18,
                                                         color:
-                                                            Color(0xFF4B48C9),
+                                                        Color(0xFF4B48C9),
                                                       ),
                                                       const Icon(
                                                         Icons.star,
                                                         size: 18,
                                                         color:
-                                                            Color(0xFF4B48C9),
+                                                        Color(0xFF4B48C9),
                                                       ),
                                                       const Icon(
                                                         Icons.star,
                                                         size: 18,
                                                         color:
-                                                            Color(0xFF4B48C9),
+                                                        Color(0xFF4B48C9),
                                                       ),
                                                       const Icon(
                                                         Icons.star,
                                                         size: 18,
                                                         color:
-                                                            Color(0xFF4B48C9),
+                                                        Color(0xFF4B48C9),
                                                       ),
                                                       const Icon(
                                                         Icons.star,
                                                         size: 18,
                                                         color:
-                                                            Color(0xFF4B48C9),
+                                                        Color(0xFF4B48C9),
                                                       ),
                                                       const Icon(
                                                         Icons.star,
                                                         size: 18,
                                                         color:
-                                                            Color(0xFF4B48C9),
+                                                        Color(0xFF4B48C9),
                                                       ),
                                                     ],
                                                   ),
@@ -761,11 +787,11 @@ class _MyHomePageState extends State<MyHomePage> {
                                                     'Manish',
                                                     style: TextStyle(
                                                         color:
-                                                            Color(0xFF6E6E6E),
-                                                        fontSize: 12,
+                                                        Color(0xFF6E6E6E),
+                                                        fontSize: 16,
                                                         fontFamily: 'Jost',
                                                         fontWeight:
-                                                            FontWeight.w400),
+                                                        FontWeight.w400),
                                                   ),
                                                 ],
                                               ),
@@ -784,9 +810,103 @@ class _MyHomePageState extends State<MyHomePage> {
                                               'Best host ever. Everything was on time and convenient. 5 stars!',
                                               style: TextStyle(
                                                   color: Color(0xFF323232),
-                                                  fontSize: 14,
+                                                  fontSize: 16,
                                                   fontFamily: 'Jost',
-                                                  fontWeight: FontWeight.w400),
+                                                  fontWeight: FontWeight.w500),
+                                            ),
+                                          ),
+                                        ),
+                                      ],
+                                    ),
+                                  )),
+                              Card(
+                                  elevation: elevationValue,
+                                  child: Padding(
+                                    padding: const EdgeInsets.all(10),
+                                    child: Column(
+                                      crossAxisAlignment:
+                                      CrossAxisAlignment.start,
+                                      children: [
+                                        Row(
+                                          children: [
+                                            reviewIcon[3],
+                                            Padding(
+                                              padding: const EdgeInsets.only(
+                                                  left: 8),
+                                              child: Column(
+                                                crossAxisAlignment:
+                                                CrossAxisAlignment.start,
+                                                children: [
+                                                  Row(
+                                                    children: [
+                                                      const Icon(
+                                                        Icons.star,
+                                                        size: 18,
+                                                        color:
+                                                        Color(0xFF4B48C9),
+                                                      ),
+                                                      const Icon(
+                                                        Icons.star,
+                                                        size: 18,
+                                                        color:
+                                                        Color(0xFF4B48C9),
+                                                      ),
+                                                      const Icon(
+                                                        Icons.star,
+                                                        size: 18,
+                                                        color:
+                                                        Color(0xFF4B48C9),
+                                                      ),
+                                                      const Icon(
+                                                        Icons.star,
+                                                        size: 18,
+                                                        color:
+                                                        Color(0xFF4B48C9),
+                                                      ),
+                                                      const Icon(
+                                                        Icons.star,
+                                                        size: 18,
+                                                        color:
+                                                        Color(0xFF4B48C9),
+                                                      ),
+                                                      const Icon(
+                                                        Icons.star,
+                                                        size: 18,
+                                                        color:
+                                                        Color(0xFF4B48C9),
+                                                      ),
+                                                    ],
+                                                  ),
+                                                  Text(
+                                                    'Manish',
+                                                    style: TextStyle(
+                                                        color:
+                                                        Color(0xFF6E6E6E),
+                                                        fontSize: 16,
+                                                        fontFamily: 'Jost',
+                                                        fontWeight:
+                                                        FontWeight.w400),
+                                                  ),
+                                                ],
+                                              ),
+                                            )
+                                          ],
+                                        ),
+                                        Container(
+                                          padding: EdgeInsets.only(
+                                              top: 20,
+                                              bottom: 10,
+                                              left: 4,
+                                              right: 4),
+                                          width: 300,
+                                          child: Flexible(
+                                            child: Text(
+                                              'Best host ever. Everything was on time and convenient. 5 stars!',
+                                              style: TextStyle(
+                                                  color: Color(0xFF323232),
+                                                  fontSize: 16,
+                                                  fontFamily: 'Jost',
+                                                  fontWeight: FontWeight.w500),
                                             ),
                                           ),
                                         ),
@@ -813,12 +933,12 @@ class _MyHomePageState extends State<MyHomePage> {
                             'YOUR HOST',
                             style: TextStyle(
                                 color: Color(0xFF6E6E6E),
-                                fontSize: 12,
+                                fontSize: 14,
                                 fontFamily: 'Jost',
                                 fontWeight: FontWeight.w400),
                           ),
                           GestureDetector(
-                            onTap: (){
+                            onTap: () {
                               showRide(context);
                             },
                             child: Row(
@@ -875,7 +995,8 @@ class _MyHomePageState extends State<MyHomePage> {
                                                             fontSize: 12,
                                                             fontFamily: 'Jost',
                                                             fontWeight:
-                                                                FontWeight.w400),
+                                                                FontWeight
+                                                                    .w400),
                                                       ),
                                                     ),
                                                   ],
@@ -900,7 +1021,8 @@ class _MyHomePageState extends State<MyHomePage> {
                                                     color: Color(0xFF323232),
                                                     fontSize: 20,
                                                     fontFamily: 'Jost',
-                                                    fontWeight: FontWeight.w400),
+                                                    fontWeight:
+                                                        FontWeight.w400),
                                               ),
                                               Padding(
                                                 padding: EdgeInsets.all(4),
@@ -920,7 +1042,7 @@ class _MyHomePageState extends State<MyHomePage> {
                                             'Typically responds within 3 minutes.',
                                             style: TextStyle(
                                                 color: Color(0xFF6E6E6E),
-                                                fontSize: 12,
+                                                fontSize: 14,
                                                 fontFamily: 'Jost',
                                                 fontWeight: FontWeight.w400),
                                           ),
@@ -929,9 +1051,11 @@ class _MyHomePageState extends State<MyHomePage> {
                                     ),
                                   ],
                                 ),
-                                Icon(Icons.arrow_forward_ios,
+                                Icon(
+                                  Icons.arrow_forward_ios,
                                   size: 18,
-                                  color: Color(0xFF4B48C9),),
+                                  color: Color(0xFF4B48C9),
+                                ),
                               ],
                             ),
                           ),
@@ -950,16 +1074,15 @@ class _MyHomePageState extends State<MyHomePage> {
 
   void showRide(BuildContext context) {
     showModalBottomSheet(
-      context: context,
+        context: context,
         shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.only(
             topLeft: Radius.circular(10.0),
             topRight: Radius.circular(10.0),
           ),
         ),
-      builder: (BuildContext context){
-        return RequestBottomSheet();
-      }
-    );
+        builder: (BuildContext context) {
+          return RequestBottomSheet();
+        });
   }
 }
